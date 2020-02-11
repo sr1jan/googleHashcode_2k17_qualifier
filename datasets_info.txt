@@ -1,0 +1,19 @@
+./in/kittens.in
+Num_of_endPts: 1000
+Num_of_caches: 500
+Num_of_videos: 10000
+
+./in/me_at_the_zoo.in
+Num_of_endPts: 10
+Num_of_caches: 10
+Num_of_videos: 100
+
+./in/trending_today.in
+Num_of_endPts: 100
+Num_of_caches: 100
+Num_of_videos: 10000
+
+./in/videos_worth_spreading.in
+Num_of_endPts: 100
+Num_of_caches: 100
+Num_of_videos: 10000
