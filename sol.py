@@ -60,58 +60,72 @@ if __name__ ==  '__main__':
 
     # {ep: [d_latn, [cnce_conn]],....}
     # [ [{vid}: [req,...],...], [{cache}: [diff,...],...] ]
-    ep_dl_c = {}
-    vids_caches = []
+    # ep_dl_c = {}
+    # vids_caches = []
+    # for ep in end_pts:
+    #     ep_dl_c[ep] = [end_pts[ep][0][0],[c[0] for c in end_pts[ep][1]]]
+
+    #     vids = [v[0] for v in end_pts[ep][2]]
+    #     cache = [c[0] for c in end_pts[ep][1]]
+
+    #     for v,_ in v_dict.items():
+    #         if v not in vids:
+    #             v_dict[v].append(0)
+    #     for v in end_pts[ep][2]:
+    #         v_dict[v[0]].append(v[1])
+
+    #     for c,_ in c_dict.items():
+    #         if c not in cache:
+    #             c_dict[c].append(0)
+    #     for c in end_pts[ep][1]:
+    #         c_dict[c[0]].append(c[1])
+
+    # vids_caches.append(v_dict)
+    # vids_caches.append(c_dict)
+
+
+
+    # For RITIK
+    # v_dict = {vid: [(ep, req),...], }
     for ep in end_pts:
-        ep_dl_c[ep] = [end_pts[ep][0][0],[c[0] for c in end_pts[ep][1]]]
 
         vids = [v[0] for v in end_pts[ep][2]]
-        cache = [c[0] for c in end_pts[ep][1]]
 
-        for v,_ in v_dict.items():
-            if v not in vids:
-                v_dict[v].append(0)
         for v in end_pts[ep][2]:
-            v_dict[v[0]].append(v[1])
+            v_dict[v[0]].append((ep,v[1]))
 
-        for c,_ in c_dict.items():
-            if c not in cache:
-                c_dict[c].append(0)
-        for c in end_pts[ep][1]:
-            c_dict[c[0]].append(c[1])
+    # For RITIK
+    for v in v_dict:
+        print(v, v_dict[v])
 
-    vids_caches.append(v_dict)
-    vids_caches.append(c_dict)
+#     cv_prod_comb = {}
+#     for c in range(caches):
+#         cv_prod_comb[c] = []
 
+#     for c in vids_caches[1]:
+#         max_prod_list = []
+#         for v in vids_caches[0]:
+#             # print(f"{v},{c} ~ {vids_caches[0][v]} | {vids_caches[1][c]}")
+#             cart_prod = [a*b for a,b in zip(vids_caches[0][v],vids_caches[1][c])]
+#             max_prod = max(cart_prod)
+#             max_prod_list.append([v, max_prod])
+#         max_prod_list = sorted(max_prod_list, key=lambda x: x[1], reverse=True)
+#         cv_prod_comb[c].append(max_prod_list)
 
-    cv_prod_comb = {}
-    for c in range(caches):
-        cv_prod_comb[c] = []
+#     for comb in cv_prod_comb:
+#         l = [cc for cc in cv_prod_comb[c][0] if cc[1] is not 0]
+#         print(comb, *l, sep=' ')
+#     print()
 
-    for c in vids_caches[1]:
-        max_prod_list = []
-        for v in vids_caches[0]:
-            # print(f"{v},{c} ~ {vids_caches[0][v]} | {vids_caches[1][c]}")
-            cart_prod = [a*b for a,b in zip(vids_caches[0][v],vids_caches[1][c])]
-            max_prod = max(cart_prod)
-            max_prod_list.append([v, max_prod])
-        max_prod_list = sorted(max_prod_list, key=lambda x: x[1], reverse=True)
-        cv_prod_comb[c].append(max_prod_list)
-
-    for comb in cv_prod_comb:
-        l = [cc for cc in cv_prod_comb[c][0] if cc[1] is not 0]
-        print(comb, *l, sep=' ')
-    print()
-
-    for comb in cv_prod_comb:
-        # print(comb, cv_prod_comb[comb])
-        for v in cv_prod_comb[comb][0]:
-            if v[1] is 0: continue
-            cur_c_size = cache_vids[comb][1]
-            # print(c[0], cur_c_size)
-            if vids_size[v[0]] <= cur_c_size:
-                cache_vids[comb][0].append(v[0])
-                cache_vids[comb][1] = cur_c_size - vids_size[v[0]]
+#     for comb in cv_prod_comb:
+#         # print(comb, cv_prod_comb[comb])
+#         for v in cv_prod_comb[comb][0]:
+#             if v[1] is 0: continue
+#             cur_c_size = cache_vids[comb][1]
+#             # print(c[0], cur_c_size)
+#             if vids_size[v[0]] <= cur_c_size:
+#                 cache_vids[comb][0].append(v[0])
+#                 cache_vids[comb][1] = cur_c_size - vids_size[v[0]]
 
 
     # print()
